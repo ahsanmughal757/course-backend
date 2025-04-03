@@ -11,9 +11,6 @@ from django.contrib.auth.models import User
 from .models import Course
 from .utils.course_utils import get_playlist_data
 
-from app.lib.supabase.client import url, key, supabase
-
-
 # View for Course Details
 class CourseDetailsView(viewsets.ModelViewSet):
     queryset = Course.objects.all()
