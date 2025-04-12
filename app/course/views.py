@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
 from .serializers import CourseDetailsSerializer, SupabaseConnectionSerializer
 
 
@@ -13,6 +14,7 @@ from .utils.course_utils import get_playlist_data
 
 # View for Course Details
 class CourseDetailsView(viewsets.ModelViewSet):
+    authentication_classes = [TokenAuthentication]
     queryset = Course.objects.all()
     serializer_class = CourseDetailsSerializer    
     def retreive(self, request):

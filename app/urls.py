@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 
 from app.auth.serializers import UserSerializer, GroupSerializer
-from app.auth.views import UserViewSet, GroupViewSet
+from app.auth.views import UserViewSet, GroupViewSet, LoginAPIView, LogoutAPIView, SessionAPIView
 
 # # Serializers define the API representation.
 # class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,4 +46,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('course/', include('app.course.urls')),
+    path('auth/', include([
+        path('login', LoginAPIView.as_view(), name='login'),
+        path('logout', LogoutAPIView.as_view(), name='logout'),
+        path('session', SessionAPIView.as_view(), name='session'),
+    ]))
 ]

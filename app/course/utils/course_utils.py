@@ -30,7 +30,7 @@ def get_playlist_data(playlist_url, level, category, prerequisites):
         lessons.append({
             "title": entry.get('title', 'Unknown'),
             "duration": format_duration(entry.get('duration', 0)),
-            "videoId": entry.get('id', 'Unknown')
+            "video_id": entry.get('id', 'Unknown')
         })
     
     course_data = {
@@ -38,8 +38,8 @@ def get_playlist_data(playlist_url, level, category, prerequisites):
         "instructor": channel_name,
         # "description": f"A basic crash course covering {playlist_title} by {channel_name}.",
         "description": playlist_description,
-        "videoId": lessons[0]['videoId'] if lessons else "null",
-        "videoUrl": f"https://www.youtube.com/watch?v={lessons[0]['videoId']}" if lessons else "Unknown",
+        "video_id": lessons[0]['video_id'] if lessons else "null",
+        "video_url": f"https://www.youtube.com/watch?v={lessons[0]['video_id']}" if lessons else "Unknown",
         "prerequisites": prerequisites,
         "modules": [
             {
